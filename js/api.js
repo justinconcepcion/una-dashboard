@@ -308,9 +308,21 @@
     if (hasConfig) {
       fetchAllData();
 
-      // Auto-refresh
+      // Auto-refresh with Visibility API — pause when tab is hidden
       var interval = (config.refreshIntervalMinutes || 15) * 60 * 1000;
-      setInterval(fetchAllData, interval);
+      var refreshTimer = setInterval(fetchAllData, interval);
+
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+          clearInterval(refreshTimer);
+          refreshTimer = null;
+        } else {
+          if (!refreshTimer) {
+            fetchAllData();
+            refreshTimer = setInterval(fetchAllData, interval);
+          }
+        }
+      });
     } else {
       console.info('[Dashboard] No API keys configured. Showing mock data. Copy config.example.js to config.js and add your keys.');
     }

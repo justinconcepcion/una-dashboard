@@ -26,6 +26,7 @@
       const isActive = t.getAttribute('data-tab') === tabName;
       t.classList.toggle('active', isActive);
       t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      t.setAttribute('tabindex', isActive ? '0' : '-1');
     });
 
     tabContents.forEach(function (tc) {

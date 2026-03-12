@@ -314,13 +314,13 @@
 
       document.addEventListener('visibilitychange', function () {
         if (document.hidden) {
-          clearInterval(refreshTimer);
-          refreshTimer = null;
-        } else {
-          if (!refreshTimer) {
-            fetchAllData();
-            refreshTimer = setInterval(fetchAllData, interval);
+          if (refreshTimer) {
+            clearInterval(refreshTimer);
+            refreshTimer = null;
           }
+        } else if (!refreshTimer) {
+          fetchAllData();
+          refreshTimer = setInterval(fetchAllData, interval);
         }
       });
     } else {

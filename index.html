@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNA Board Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo-area">
+    <div class="logo-mark">U</div>
+    <div>
+      <div class="logo-text">University Neighbourhoods Association</div>
+      <div class="logo-sub">Board Oversight Dashboard</div>
+    </div>
+  </div>
+  <div class="header-meta">
+    <div class="period-badge">Q1 &middot; Jan &ndash; Mar 2026</div>
+    <div class="last-updated">Updated Mar 2, 2026</div>
+    <div class="avatar">BD</div>
+  </div>
+</header>
+
+<!-- PAGE -->
+<div class="page">
+
+  <div class="page-title">Overview</div>
+  <div class="page-subtitle">High-level summary for Board of Directors &middot; Click any card or panel to explore details</div>
+
+  <!-- NAV TABS -->
+  <div class="nav-tabs">
+    <div class="tab active">Summary</div>
+    <div class="tab" onclick="showModal('tab')">Finance</div>
+    <div class="tab" onclick="showModal('tab')">Recreation</div>
+    <div class="tab" onclick="showModal('tab')">Services</div>
+    <div class="tab" onclick="showModal('tab')">Governance</div>
+    <div class="tab" onclick="showModal('tab')">Strategic Plan</div>
+  </div>
+
+  <!-- KPI ROW -->
+  <div class="section-label">Key Performance Indicators</div>
+  <div class="kpi-row">
+
+    <div class="kpi-card" onclick="showModal('finance')">
+      <div class="kpi-label">
+        Levy Revenue Collected
+        <div class="kpi-icon" style="background:rgba(82,183,136,0.15)">&#x1F4B0;</div>
+      </div>
+      <div class="kpi-value">$2.4M</div>
+      <div class="kpi-meta">
+        <span class="badge badge-green">&uarr; 98%</span>
+        <span class="kpi-meta-text">of $2.45M annual target</span>
+        <span class="drill-hint">Drill in &rarr;</span>
+      </div>
+    </div>
+
+    <div class="kpi-card" onclick="showModal('members')">
+      <div class="kpi-label">
+        Active UNA Members
+        <div class="kpi-icon" style="background:rgba(0,168,150,0.15)">&#x1F465;</div>
+      </div>
+      <div class="kpi-value">3,812</div>
+      <div class="kpi-meta">
+        <span class="badge badge-green">&uarr; 6%</span>
+        <span class="kpi-meta-text">vs. same period last year</span>
+        <span class="drill-hint">Drill in &rarr;</span>
+      </div>
+    </div>
+
+    <div class="kpi-card" onclick="showModal('programs')">
+      <div class="kpi-label">
+        Program Fill Rate
+        <div class="kpi-icon" style="background:rgba(244,162,97,0.15)">&#x1F3CB;&#xFE0F;</div>
+      </div>
+      <div class="kpi-value">74%</div>
+      <div class="kpi-meta">
+        <span class="badge badge-amber">&darr; 3pts</span>
+        <span class="kpi-meta-text">vs. Q4 2025</span>
+        <span class="drill-hint">Drill in &rarr;</span>
+      </div>
+    </div>
+
+    <div class="kpi-card" onclick="showModal('risk')">
+      <div class="kpi-label">
+        Open Action Items
+        <div class="kpi-icon" style="background:rgba(224,92,92,0.12)">&#x26A0;&#xFE0F;</div>
+      </div>
+      <div class="kpi-value">7</div>
+      <div class="kpi-meta">
+        <span class="badge badge-red">2 urgent</span>
+        <span class="kpi-meta-text">require board decision</span>
+        <span class="drill-hint">Drill in &rarr;</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MAIN GRID: Finance + Alerts -->
+  <div class="section-label">Financial &amp; Risk Snapshot</div>
+  <div class="section-grid">
+
+    <!-- FINANCE PANEL -->
+    <div class="panel" onclick="showModal('finance')">
+      <div class="panel-header">
+        <span class="panel-title">Budget vs. Actuals &mdash; Q1 2026</span>
+        <span class="panel-action">View Full Report <span class="drill-arrow">&rarr;</span></span>
+      </div>
+      <div class="panel-body">
+        <div class="finance-row">
+
+          <div class="f-item">
+            <div class="f-labels">
+              <span class="f-name">Recreation Programs</span>
+              <div class="f-amounts">
+                <span class="f-actual">$412K</span>
+                <span class="f-budget">/ $540K</span>
+                <span class="badge badge-green" style="font-size:10px">76%</span>
+              </div>
+            </div>
+            <div class="bar-track"><div class="bar-fill bar-green" style="width:76%"></div></div>
+          </div>
+
+          <div class="f-item">
+            <div class="f-labels">
+              <span class="f-name">Community Services</span>
+              <div class="f-amounts">
+                <span class="f-actual">$288K</span>
+                <span class="f-budget">/ $310K</span>
+                <span class="badge badge-amber" style="font-size:10px">93%</span>
+              </div>
+            </div>
+            <div class="bar-track"><div class="bar-fill bar-amber" style="width:93%"></div></div>
+          </div>
+
+          <div class="f-item">
+            <div class="f-labels">
+              <span class="f-name">Facility Operations</span>
+              <div class="f-amounts">
+                <span class="f-actual">$198K</span>
+                <span class="f-budget">/ $225K</span>
+                <span class="badge badge-green" style="font-size:10px">88%</span>
+              </div>
+            </div>
+            <div class="bar-track"><div class="bar-fill bar-green" style="width:88%"></div></div>
+          </div>
+
+          <div class="f-item">
+            <div class="f-labels">
+              <span class="f-name">Administration</span>
+              <div class="f-amounts">
+                <span class="f-actual">$174K</span>
+                <span class="f-budget">/ $160K</span>
+                <span class="badge badge-red" style="font-size:10px">109%</span>
+              </div>
+            </div>
+            <div class="bar-track"><div class="bar-fill bar-red" style="width:100%"></div></div>
+          </div>
+
+          <div class="f-item">
+            <div class="f-labels">
+              <span class="f-name">Neighbours Fund (disbursed)</span>
+              <div class="f-amounts">
+                <span class="f-actual">$62K</span>
+                <span class="f-budget">/ $200K</span>
+                <span class="badge badge-teal" style="font-size:10px">31%</span>
+              </div>
+            </div>
+            <div class="bar-track"><div class="bar-fill bar-teal" style="width:31%"></div></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ALERTS PANEL -->
+    <div class="panel" onclick="showModal('alerts')">
+      <div class="panel-header">
+        <span class="panel-title">Board Attention Required</span>
+        <span class="panel-action">All Items <span class="drill-arrow">&rarr;</span></span>
+      </div>
+      <div class="panel-body">
+        <div class="alert-list">
+
+          <div class="alert-item">
+            <div class="alert-dot dot-red"></div>
+            <div>
+              <div class="alert-text">Admin budget overage &mdash; 9% above Q1 target</div>
+              <div class="alert-meta">Finance &middot; Flagged Feb 28</div>
+            </div>
+          </div>
+
+          <div class="alert-item">
+            <div class="alert-dot dot-red"></div>
+            <div>
+              <div class="alert-text">Committee vacancy &mdash; 3 seats unfilled for 60+ days</div>
+              <div class="alert-meta">Governance &middot; Flagged Feb 10</div>
+            </div>
+          </div>
+
+          <div class="alert-item">
+            <div class="alert-dot dot-amber"></div>
+            <div>
+              <div class="alert-text">Wesbrook fitness equipment &mdash; capital approval needed</div>
+              <div class="alert-meta">Facilities &middot; Estimated $38K</div>
+            </div>
+          </div>
+
+          <div class="alert-item">
+            <div class="alert-dot dot-amber"></div>
+            <div>
+              <div class="alert-text">2026 Budget Consultation closes Mar 15</div>
+              <div class="alert-meta">Finance &middot; Board input required</div>
+            </div>
+          </div>
+
+          <div class="alert-item">
+            <div class="alert-dot dot-teal"></div>
+            <div>
+              <div class="alert-text">Strategic Plan refresh: 3 initiatives on track for Q2 launch</div>
+              <div class="alert-meta">Strategy &middot; For awareness</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM GRID: 3 columns -->
+  <div class="section-label">Community &amp; Operations</div>
+  <div class="section-grid-3">
+
+    <!-- MEMBERSHIP & ENGAGEMENT -->
+    <div class="panel" onclick="showModal('members')">
+      <div class="panel-header">
+        <span class="panel-title">Membership &amp; Engagement</span>
+        <span class="panel-action">Details <span class="drill-arrow">&rarr;</span></span>
+      </div>
+      <div class="panel-body">
+        <table class="metrics-table">
+          <tr>
+            <td class="td-label">UNA Accounts (active)</td>
+            <td class="td-value">3,812</td>
+            <td class="td-trend"><span class="badge badge-green" style="font-size:10px">&uarr;6%</span></td>
+          </tr>
+          <tr>
+            <td class="td-label">Society Members</td>
+            <td class="td-value">1,204</td>
+            <td class="td-trend"><span class="badge badge-green" style="font-size:10px">&uarr;2%</span></td>
+          </tr>
+          <tr>
+            <td class="td-label">UNA Cards issued (Q1)</td>
+            <td class="td-value">318</td>
+            <td class="td-trend"><span class="badge badge-teal" style="font-size:10px">new</span></td>
+          </tr>
+          <tr>
+            <td class="td-label">Newsletter subscribers</td>
+            <td class="td-value">2,940</td>
+            <td class="td-trend"><span class="badge badge-green" style="font-size:10px">&uarr;4%</span></td>
+          </tr>
+          <tr>
+            <td class="td-label">Events held (Q1)</td>
+            <td class="td-value">22</td>
+            <td class="td-trend"><span class="badge badge-amber" style="font-size:10px">&darr;1</span></td>
+          </tr>
+          <tr>
+            <td class="td-label">Volunteer hours logged</td>
+            <td class="td-value">640 hrs</td>
+            <td class="td-trend"><span class="badge badge-green" style="font-size:10px">&uarr;12%</span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- RECREATION -->
+    <div class="panel" onclick="showModal('programs')">
+      <div class="panel-header">
+        <span class="panel-title">Recreation Utilization</span>
+        <span class="panel-action">Details <span class="drill-arrow">&rarr;</span></span>
+      </div>
+      <div class="panel-body">
+        <table class="metrics-table">
+          <tr>
+            <td class="td-label">Program fill rate</td>
+            <td class="td-value">74%</td>
+            <td class="td-trend"><span class="badge badge-amber" style="font-size:10px">&darr;3pt</span></td>
+          </tr>
+          <tr>
+            <td class="td-label">Wesbrook utilization</td>
+            <td class="td-value">81%</td>
+            <td class="td-trend"><span class="badge badge-green" style="font-size:10px">&uarr;2pt</span></td>
+          </tr>
+          <tr>
+            <td class="td-label">Old Barn utilization</td>
+            <td class="td-value">67%</td>
+            <td class="td-trend"><span class="badge badge-amber" style="font-size:10px">&rarr;</span></td>
+          </tr>
+          <tr>
+            <td class="td-label">Drop-in visits (Q1)</td>
+            <td class="td-value">4,820</td>
+            <td class="td-trend"><span class="badge badge-green" style="font-size:10px">&uarr;8%</span></td>
+          </tr>
+          <tr>
+            <td class="td-label">Programs on waitlist</td>
+            <td class="td-value">6</td>
+            <td class="td-trend"><span class="badge badge-amber" style="font-size:10px">watch</span></td>
+          </tr>
+          <tr>
+            <td class="td-label">Camps registered</td>
+            <td class="td-value">92 / 120</td>
+            <td class="td-trend"><span class="badge badge-teal" style="font-size:10px">77%</span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- GOVERNANCE & STRATEGIC -->
+    <div class="panel" onclick="showModal('governance')">
+      <div class="panel-header">
+        <span class="panel-title">Governance &amp; Strategy</span>
+        <span class="panel-action">Details <span class="drill-arrow">&rarr;</span></span>
+      </div>
+      <div class="panel-body">
+        <table class="metrics-table">
+          <tr>
+            <td class="td-label">Board meeting attendance</td>
+            <td class="td-value">87%</td>
+            <td class="td-trend"><span class="badge badge-green" style="font-size:10px">&uarr;</span></td>
+          </tr>
+          <tr>
+            <td class="td-label">Committee vacancies</td>
+            <td class="td-value">3 open</td>
+            <td class="td-trend"><span class="badge badge-red" style="font-size:10px">urgent</span></td>
+          </tr>
+          <tr>
+            <td class="td-label">Strategic initiatives on track</td>
+            <td class="td-value">8 / 11</td>
+            <td class="td-trend"><span class="badge badge-green" style="font-size:10px">73%</span></td>
+          </tr>
+          <tr>
+            <td class="td-label">AGM date confirmed</td>
+            <td class="td-value">May 14</td>
+            <td class="td-trend"><span class="badge badge-teal" style="font-size:10px">set</span></td>
+          </tr>
+          <tr>
+            <td class="td-label">Priorities Survey responses</td>
+            <td class="td-value">628</td>
+            <td class="td-trend"><span class="badge badge-green" style="font-size:10px">&uarr;18%</span></td>
+          </tr>
+          <tr>
+            <td class="td-label">Open board resolutions</td>
+            <td class="td-value">2</td>
+            <td class="td-trend"><span class="badge badge-amber" style="font-size:10px">pending</span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- TOOLTIP -->
+<div class="tooltip" id="tooltip"></div>
+
+<!-- MODAL (drill-down placeholder) -->
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-title" id="modal-title">Detail View</div>
+    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-close" onclick="document.getElementById('modal').classList.remove('open')">&larr; Back to Summary</div>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

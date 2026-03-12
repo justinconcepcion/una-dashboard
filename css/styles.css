@@ -689,3 +689,20 @@ svg.donut { overflow: visible; }
   border-radius: 2px;
   display: inline-block;
 }
+
+/* ── LOADING STATES ── */
+@keyframes shimmer {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+.metric-loading {
+  animation: shimmer 1.2s ease-in-out infinite;
+  color: var(--muted) !important;
+}
+
+/* ── LIVE INDICATOR ── */
+[data-metric] {
+  transition: color 0.3s ease;
+}

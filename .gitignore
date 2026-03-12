@@ -9,3 +9,6 @@ Thumbs.db
 
 # Node (for future use)
 node_modules/
+
+# API keys — NEVER commit
+js/config.js

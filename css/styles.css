@@ -194,11 +194,18 @@ header {
   pointer-events: none;
 }
 
-.kpi-card:hover {
+.kpi-card:hover,
+.kpi-card:focus-visible {
   background: var(--card-hover);
   border-color: rgba(0,168,150,0.3);
   transform: translateY(-2px);
   box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+}
+
+.kpi-card:focus-visible,
+.panel:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
 }
 
 .kpi-card:hover .drill-hint { opacity: 1; }

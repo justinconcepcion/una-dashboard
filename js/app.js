@@ -53,6 +53,16 @@
     if (nav) switchTab(nav.getAttribute('data-navigate'));
   });
 
+  // ── Keyboard support for navigable cards/panels ──
+  document.querySelector('.page').addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const nav = e.target.closest('[data-navigate]');
+    if (nav) {
+      e.preventDefault();
+      switchTab(nav.getAttribute('data-navigate'));
+    }
+  });
+
   // ── Keyboard support for tabs ──
   document.querySelector('.nav-tabs').addEventListener('keydown', function (e) {
     const tabArr = Array.from(tabs);

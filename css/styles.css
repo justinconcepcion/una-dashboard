@@ -706,3 +706,39 @@ svg.donut { overflow: visible; }
 [data-metric] {
   transition: color 0.3s ease;
 }
+
+/* ── RESPONSIVE ── */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  header { padding: 16px 24px; }
+  .page { padding: 24px 24px 48px; }
+  .kpi-row { grid-template-columns: repeat(2, 1fr); }
+  .section-grid { grid-template-columns: 1fr; }
+  .section-grid-3 { grid-template-columns: 1fr 1fr; }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  header {
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+  .header-meta { gap: 12px; }
+  .page { padding: 16px 16px 40px; }
+  .page-title { font-size: 22px; }
+  .page-subtitle { font-size: 13px; margin-bottom: 24px; }
+  .kpi-row { grid-template-columns: 1fr; }
+  .kpi-value { font-size: 28px; }
+  .section-grid,
+  .section-grid-3 { grid-template-columns: 1fr; }
+  .nav-tabs {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tab { font-size: 12px; padding: 6px 12px; }
+  .chart-grid { gap: 12px; height: 140px; }
+  .donut-wrapper { flex-direction: column; }
+  .modal { padding: 24px; }
+}

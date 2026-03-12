@@ -1,50 +1,95 @@
-const details = {
-  finance: {
-    title: "Finance Detail",
-    body: "This section would display full budget vs. actuals by department, monthly cash flow trends, reserve fund levels, Residential Services Levy collection details, and year-over-year comparisons.\n\nIn a production build, this links to the Finance module with downloadable reports and GL drill-down."
-  },
-  members: {
-    title: "Membership & Engagement Detail",
-    body: "Breakdowns by neighbourhood (Wesbrook, East Campus, Hawthorn), new vs. returning members, UNA Card usage by venue, event attendance by type, newsletter open rates, and volunteer hour trends by program area."
-  },
-  programs: {
-    title: "Recreation & Programs Detail",
-    body: "Program fill rates by category (youth, adult, senior, fitness), facility utilization by hour and day, drop-in counts by sport, camp registrations, waitlist management, and cost-recovery rates per program."
-  },
-  risk: {
-    title: "Action Items & Risk Register",
-    body: "Full list of open items with owner, due date, and status. Includes board decisions required, policy gaps, maintenance deferrals, HR flags, and insurance/liability matters."
-  },
-  alerts: {
-    title: "Board Attention Items",
-    body: "Detailed breakdown of all flagged items with supporting data, options for resolution, and recommended motions where applicable. Items are prioritized by urgency and financial impact."
-  },
-  governance: {
-    title: "Governance & Strategic Plan Detail",
-    body: "Board attendance by director, committee roster and vacancy status, strategic initiative progress by pillar, AGM preparation checklist, open resolutions log, and election timeline."
-  },
-  tab: {
-    title: "Section Coming Soon",
-    body: "In a full implementation, each tab would open a dedicated sub-dashboard with deeper analytics for that operational area. This is a prototype of the summary view."
+(function () {
+  'use strict';
+
+  // ── Tab Navigation ──
+  const tabs = document.querySelectorAll('.tab[data-tab]');
+  const tabContents = document.querySelectorAll('.tab-content');
+  const pageTitle = document.getElementById('page-title');
+  const pageSubtitle = document.getElementById('page-subtitle');
+
+  const pageInfo = {
+    summary:    { title: 'Overview',       subtitle: 'High-level summary for Board of Directors \u00b7 Click any card or panel to explore details' },
+    finance:    { title: 'Finance',        subtitle: 'Budget tracking, revenue sources, reserves, and Neighbours Fund' },
+    recreation: { title: 'Recreation',     subtitle: 'Program fill rates, facility utilization, and drop-in activity' },
+    services:   { title: 'Services',       subtitle: 'Membership, community engagement, Green Depot, child care, and operations' },
+    governance: { title: 'Governance',     subtitle: 'Board attendance, committees, resolutions, and AGM preparation' },
+    strategic:  { title: 'Strategic Plan', subtitle: '2024\u20132028 strategic plan progress across all pillars' }
+  };
+
+  let animating = false;
+
+  function switchTab(tabName) {
+    const info = pageInfo[tabName];
+    if (!info) return;
+
+    tabs.forEach(function (t) {
+      const isActive = t.getAttribute('data-tab') === tabName;
+      t.classList.toggle('active', isActive);
+      t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+
+    tabContents.forEach(function (tc) {
+      const isActive = tc.id === 'tab-' + tabName;
+      tc.classList.toggle('active', isActive);
+      tc.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+    });
+
+    if (pageTitle) pageTitle.textContent = info.title;
+    if (pageSubtitle) pageSubtitle.textContent = info.subtitle;
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    animateBars();
   }
-};
 
-function showModal(key) {
-  var d = details[key];
-  document.getElementById('modal-title').textContent = d.title;
-  document.getElementById('modal-body').textContent = d.body;
-  document.getElementById('modal').classList.add('open');
-}
-
-function closeModal(e) {
-  document.getElementById('modal').classList.remove('open');
-}
-
-// Animate bars on load
-window.addEventListener('load', function () {
-  document.querySelectorAll('.bar-fill').forEach(function (bar) {
-    var w = bar.style.width;
-    bar.style.width = '0%';
-    setTimeout(function () { bar.style.width = w; }, 300);
+  // ── Event delegation for tabs ──
+  document.querySelector('.nav-tabs').addEventListener('click', function (e) {
+    const tab = e.target.closest('.tab[data-tab]');
+    if (tab) switchTab(tab.getAttribute('data-tab'));
   });
-});
+
+  // ── Event delegation for card/panel navigation ──
+  document.querySelector('.page').addEventListener('click', function (e) {
+    const nav = e.target.closest('[data-navigate]');
+    if (nav) switchTab(nav.getAttribute('data-navigate'));
+  });
+
+  // ── Keyboard support for tabs ──
+  document.querySelector('.nav-tabs').addEventListener('keydown', function (e) {
+    const tabArr = Array.from(tabs);
+    const current = tabArr.indexOf(e.target);
+    if (current === -1) return;
+
+    let next = -1;
+    if (e.key === 'ArrowRight') next = (current + 1) % tabArr.length;
+    else if (e.key === 'ArrowLeft') next = (current - 1 + tabArr.length) % tabArr.length;
+    else if (e.key === 'Home') next = 0;
+    else if (e.key === 'End') next = tabArr.length - 1;
+
+    if (next >= 0) {
+      e.preventDefault();
+      tabArr[next].focus();
+      switchTab(tabArr[next].getAttribute('data-tab'));
+    }
+  });
+
+  // ── Animate progress bars with guard against rapid switching ──
+  function animateBars() {
+    if (animating) return;
+    animating = true;
+
+    const activeTab = document.querySelector('.tab-content.active');
+    if (!activeTab) { animating = false; return; }
+
+    activeTab.querySelectorAll('.bar-fill').forEach(function (bar) {
+      const w = bar.style.width;
+      bar.style.width = '0%';
+      // Brief delay lets the browser register 0% before animating to target
+      setTimeout(function () { bar.style.width = w; }, 100);
+    });
+
+    setTimeout(function () { animating = false; }, 1100);
+  }
+
+  // Initial animation on load
+  window.addEventListener('load', animateBars);
+})();

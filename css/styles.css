@@ -16,6 +16,25 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* ── SKIP LINK ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  background: var(--teal);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 0 0 8px 8px;
+  z-index: 999;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
 body {
   font-family: 'DM Sans', sans-serif;
   background: var(--navy);
@@ -236,6 +255,7 @@ header {
 .badge-amber { background: rgba(244,162,97,0.15); color: var(--amber); }
 .badge-red   { background: rgba(224,92,92,0.15);  color: var(--red); }
 .badge-teal  { background: rgba(0,168,150,0.15);  color: var(--teal-light); }
+.badge-sm    { font-size: 10px; }
 
 .kpi-meta-text { color: var(--muted); }
 
@@ -493,6 +513,9 @@ svg.donut { overflow: visible; }
   cursor: pointer;
   transition: all 0.15s;
   color: var(--muted);
+  background: none;
+  border: 1px solid transparent;
+  font-family: inherit;
 }
 
 .tab:hover { color: #cdd8e3; background: rgba(255,255,255,0.04); }
@@ -590,3 +613,79 @@ svg.donut { overflow: visible; }
 .kpi-card:nth-child(2) { animation-delay: 0.10s; }
 .kpi-card:nth-child(3) { animation-delay: 0.15s; }
 .kpi-card:nth-child(4) { animation-delay: 0.20s; }
+
+/* ── TAB CONTENT ── */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+  animation: fadeUp 0.3s ease both;
+}
+
+/* ── BAR CHART ── */
+.chart-grid {
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+  height: 180px;
+  padding: 0 12px;
+}
+
+.chart-bar-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.chart-bar-pair {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  width: 100%;
+}
+
+.chart-bar {
+  flex: 1;
+  border-radius: 4px 4px 0 0;
+  min-height: 4px;
+  transition: height 0.8s ease;
+}
+
+.chart-bar-revenue { background: var(--teal); }
+.chart-bar-expense { background: var(--amber); opacity: 0.8; }
+
+.chart-month {
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+}
+
+.chart-legend {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.chart-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.chart-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  display: inline-block;
+}

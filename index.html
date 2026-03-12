@@ -4,10 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UNA Board Dashboard</title>
+<meta name="description" content="UNA Board Oversight Dashboard — high-level KPIs and operational metrics for the University Neighbourhoods Association Board of Directors.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='8' fill='%2300a896'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-weight='600' font-size='22' fill='white'>U</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<noscript><p style="padding:2rem;color:#e8eef4;text-align:center">This dashboard requires JavaScript to function.</p></noscript>
 
 <!-- HEADER -->
 <header>
@@ -26,356 +30,651 @@
 </header>
 
 <!-- PAGE -->
-<div class="page">
+<main class="page" id="main-content">
 
-  <div class="page-title">Overview</div>
-  <div class="page-subtitle">High-level summary for Board of Directors &middot; Click any card or panel to explore details</div>
+  <h1 class="page-title" id="page-title">Overview</h1>
+  <p class="page-subtitle" id="page-subtitle">High-level summary for Board of Directors &middot; Click any card or panel to explore details</p>
 
   <!-- NAV TABS -->
-  <div class="nav-tabs">
-    <div class="tab active">Summary</div>
-    <div class="tab" onclick="showModal('tab')">Finance</div>
-    <div class="tab" onclick="showModal('tab')">Recreation</div>
-    <div class="tab" onclick="showModal('tab')">Services</div>
-    <div class="tab" onclick="showModal('tab')">Governance</div>
-    <div class="tab" onclick="showModal('tab')">Strategic Plan</div>
+  <nav class="nav-tabs" role="tablist" aria-label="Dashboard sections">
+    <button class="tab active" data-tab="summary" role="tab" aria-selected="true" tabindex="0">Summary</button>
+    <button class="tab" data-tab="finance" role="tab" aria-selected="false" tabindex="-1">Finance</button>
+    <button class="tab" data-tab="recreation" role="tab" aria-selected="false" tabindex="-1">Recreation</button>
+    <button class="tab" data-tab="services" role="tab" aria-selected="false" tabindex="-1">Services</button>
+    <button class="tab" data-tab="governance" role="tab" aria-selected="false" tabindex="-1">Governance</button>
+    <button class="tab" data-tab="strategic" role="tab" aria-selected="false" tabindex="-1">Strategic Plan</button>
+  </nav>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- TAB: SUMMARY                            -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="tab-content active" id="tab-summary" role="tabpanel" aria-hidden="false">
+
+    <div class="section-label">Key Performance Indicators</div>
+    <div class="kpi-row">
+      <div class="kpi-card" data-navigate="finance">
+        <div class="kpi-label">
+          Levy Revenue Collected
+          <span class="kpi-icon" style="background:rgba(82,183,136,0.15)" role="img" aria-label="Revenue">&#x1F4B0;</span>
+        </div>
+        <div class="kpi-value">$2.4M</div>
+        <div class="kpi-meta">
+          <span class="badge badge-green">&uarr; 98%</span>
+          <span class="kpi-meta-text">of $2.45M annual target</span>
+          <span class="drill-hint">Drill in &rarr;</span>
+        </div>
+      </div>
+      <div class="kpi-card" data-navigate="governance">
+        <div class="kpi-label">
+          Active UNA Members
+          <span class="kpi-icon" style="background:rgba(0,168,150,0.15)" role="img" aria-label="Members">&#x1F465;</span>
+        </div>
+        <div class="kpi-value">3,812</div>
+        <div class="kpi-meta">
+          <span class="badge badge-green">&uarr; 6%</span>
+          <span class="kpi-meta-text">vs. same period last year</span>
+          <span class="drill-hint">Drill in &rarr;</span>
+        </div>
+      </div>
+      <div class="kpi-card" data-navigate="recreation">
+        <div class="kpi-label">
+          Program Fill Rate
+          <span class="kpi-icon" style="background:rgba(244,162,97,0.15)" role="img" aria-label="Programs">&#x1F3CB;&#xFE0F;</span>
+        </div>
+        <div class="kpi-value">74%</div>
+        <div class="kpi-meta">
+          <span class="badge badge-amber">&darr; 3pts</span>
+          <span class="kpi-meta-text">vs. Q4 2025</span>
+          <span class="drill-hint">Drill in &rarr;</span>
+        </div>
+      </div>
+      <div class="kpi-card" data-navigate="governance">
+        <div class="kpi-label">
+          Open Action Items
+          <span class="kpi-icon" style="background:rgba(224,92,92,0.12)" role="img" aria-label="Alert">&#x26A0;&#xFE0F;</span>
+        </div>
+        <div class="kpi-value">7</div>
+        <div class="kpi-meta">
+          <span class="badge badge-red">2 urgent</span>
+          <span class="kpi-meta-text">require board decision</span>
+          <span class="drill-hint">Drill in &rarr;</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Financial &amp; Risk Snapshot</div>
+    <div class="section-grid">
+      <div class="panel" data-navigate="finance">
+        <div class="panel-header">
+          <span class="panel-title">Budget vs. Actuals &mdash; Q1 2026</span>
+          <span class="panel-action">View Full Report <span class="drill-arrow">&rarr;</span></span>
+        </div>
+        <div class="panel-body">
+          <div class="finance-row">
+            <div class="f-item"><div class="f-labels"><span class="f-name">Recreation Programs</span><div class="f-amounts"><span class="f-actual">$412K</span><span class="f-budget">/ $540K</span><span class="badge badge-green badge-sm">76%</span></div></div><div class="bar-track"><div class="bar-fill bar-green" style="width:76%"></div></div></div>
+            <div class="f-item"><div class="f-labels"><span class="f-name">Community Services</span><div class="f-amounts"><span class="f-actual">$288K</span><span class="f-budget">/ $310K</span><span class="badge badge-amber badge-sm">93%</span></div></div><div class="bar-track"><div class="bar-fill bar-amber" style="width:93%"></div></div></div>
+            <div class="f-item"><div class="f-labels"><span class="f-name">Facility Operations</span><div class="f-amounts"><span class="f-actual">$198K</span><span class="f-budget">/ $225K</span><span class="badge badge-green badge-sm">88%</span></div></div><div class="bar-track"><div class="bar-fill bar-green" style="width:88%"></div></div></div>
+            <div class="f-item"><div class="f-labels"><span class="f-name">Administration</span><div class="f-amounts"><span class="f-actual">$174K</span><span class="f-budget">/ $160K</span><span class="badge badge-red badge-sm">109%</span></div></div><div class="bar-track"><div class="bar-fill bar-red" style="width:100%"></div></div></div>
+            <div class="f-item"><div class="f-labels"><span class="f-name">Neighbours Fund (disbursed)</span><div class="f-amounts"><span class="f-actual">$62K</span><span class="f-budget">/ $200K</span><span class="badge badge-teal badge-sm">31%</span></div></div><div class="bar-track"><div class="bar-fill bar-teal" style="width:31%"></div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title">Board Attention Required</span>
+          <span class="panel-action">All Items <span class="drill-arrow">&rarr;</span></span>
+        </div>
+        <div class="panel-body">
+          <div class="alert-list">
+            <div class="alert-item"><div class="alert-dot dot-red"></div><div><div class="alert-text">Admin budget overage &mdash; 9% above Q1 target</div><div class="alert-meta">Finance &middot; Flagged Feb 28</div></div></div>
+            <div class="alert-item"><div class="alert-dot dot-red"></div><div><div class="alert-text">Committee vacancy &mdash; 3 seats unfilled for 60+ days</div><div class="alert-meta">Governance &middot; Flagged Feb 10</div></div></div>
+            <div class="alert-item"><div class="alert-dot dot-amber"></div><div><div class="alert-text">Wesbrook fitness equipment &mdash; capital approval needed</div><div class="alert-meta">Facilities &middot; Estimated $38K</div></div></div>
+            <div class="alert-item"><div class="alert-dot dot-amber"></div><div><div class="alert-text">2026 Budget Consultation closes Mar 15</div><div class="alert-meta">Finance &middot; Board input required</div></div></div>
+            <div class="alert-item"><div class="alert-dot dot-teal"></div><div><div class="alert-text">Strategic Plan refresh: 3 initiatives on track for Q2 launch</div><div class="alert-meta">Strategy &middot; For awareness</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Community &amp; Operations</div>
+    <div class="section-grid-3">
+      <div class="panel" data-navigate="services">
+        <div class="panel-header"><span class="panel-title">Membership &amp; Engagement</span><span class="panel-action">Details <span class="drill-arrow">&rarr;</span></span></div>
+        <div class="panel-body">
+          <table class="metrics-table">
+            <tr><td class="td-label">UNA Accounts (active)</td><td class="td-value">3,812</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;6%</span></td></tr>
+            <tr><td class="td-label">Society Members</td><td class="td-value">1,204</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;2%</span></td></tr>
+            <tr><td class="td-label">UNA Cards issued (Q1)</td><td class="td-value">318</td><td class="td-trend"><span class="badge badge-teal badge-sm">new</span></td></tr>
+            <tr><td class="td-label">Newsletter subscribers</td><td class="td-value">2,940</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;4%</span></td></tr>
+            <tr><td class="td-label">Events held (Q1)</td><td class="td-value">22</td><td class="td-trend"><span class="badge badge-amber badge-sm">&darr;1</span></td></tr>
+            <tr><td class="td-label">Volunteer hours logged</td><td class="td-value">640 hrs</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;12%</span></td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="panel" data-navigate="recreation">
+        <div class="panel-header"><span class="panel-title">Recreation Utilization</span><span class="panel-action">Details <span class="drill-arrow">&rarr;</span></span></div>
+        <div class="panel-body">
+          <table class="metrics-table">
+            <tr><td class="td-label">Program fill rate</td><td class="td-value">74%</td><td class="td-trend"><span class="badge badge-amber badge-sm">&darr;3pt</span></td></tr>
+            <tr><td class="td-label">Wesbrook utilization</td><td class="td-value">81%</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;2pt</span></td></tr>
+            <tr><td class="td-label">Old Barn utilization</td><td class="td-value">67%</td><td class="td-trend"><span class="badge badge-amber badge-sm">&rarr;</span></td></tr>
+            <tr><td class="td-label">Drop-in visits (Q1)</td><td class="td-value">4,820</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;8%</span></td></tr>
+            <tr><td class="td-label">Programs on waitlist</td><td class="td-value">6</td><td class="td-trend"><span class="badge badge-amber badge-sm">watch</span></td></tr>
+            <tr><td class="td-label">Camps registered</td><td class="td-value">92 / 120</td><td class="td-trend"><span class="badge badge-teal badge-sm">77%</span></td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="panel" data-navigate="governance">
+        <div class="panel-header"><span class="panel-title">Governance &amp; Strategy</span><span class="panel-action">Details <span class="drill-arrow">&rarr;</span></span></div>
+        <div class="panel-body">
+          <table class="metrics-table">
+            <tr><td class="td-label">Board meeting attendance</td><td class="td-value">87%</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;</span></td></tr>
+            <tr><td class="td-label">Committee vacancies</td><td class="td-value">3 open</td><td class="td-trend"><span class="badge badge-red badge-sm">urgent</span></td></tr>
+            <tr><td class="td-label">Strategic initiatives on track</td><td class="td-value">8 / 11</td><td class="td-trend"><span class="badge badge-green badge-sm">73%</span></td></tr>
+            <tr><td class="td-label">AGM date confirmed</td><td class="td-value">May 14</td><td class="td-trend"><span class="badge badge-teal badge-sm">set</span></td></tr>
+            <tr><td class="td-label">Priorities Survey responses</td><td class="td-value">628</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;18%</span></td></tr>
+            <tr><td class="td-label">Open board resolutions</td><td class="td-value">2</td><td class="td-trend"><span class="badge badge-amber badge-sm">pending</span></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- KPI ROW -->
-  <div class="section-label">Key Performance Indicators</div>
-  <div class="kpi-row">
+  <!-- ═══════════════════════════════════════ -->
+  <!-- TAB: FINANCE                            -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="tab-content" id="tab-finance" role="tabpanel" aria-hidden="true">
 
-    <div class="kpi-card" onclick="showModal('finance')">
-      <div class="kpi-label">
-        Levy Revenue Collected
-        <div class="kpi-icon" style="background:rgba(82,183,136,0.15)">&#x1F4B0;</div>
+    <div class="section-label">Financial Overview</div>
+    <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="kpi-label">Total Revenue (YTD)<span class="kpi-icon" style="background:rgba(82,183,136,0.15)" role="img" aria-label="Revenue">&#x1F4B0;</span></div>
+        <div class="kpi-value">$2.4M</div>
+        <div class="kpi-meta"><span class="badge badge-green">&uarr; 98%</span><span class="kpi-meta-text">of $2.45M target</span></div>
       </div>
-      <div class="kpi-value">$2.4M</div>
-      <div class="kpi-meta">
-        <span class="badge badge-green">&uarr; 98%</span>
-        <span class="kpi-meta-text">of $2.45M annual target</span>
-        <span class="drill-hint">Drill in &rarr;</span>
+      <div class="kpi-card">
+        <div class="kpi-label">Total Expenses (YTD)<span class="kpi-icon" style="background:rgba(244,162,97,0.15)" role="img" aria-label="Expenses">&#x1F4C9;</span></div>
+        <div class="kpi-value">$1.13M</div>
+        <div class="kpi-meta"><span class="badge badge-amber">92%</span><span class="kpi-meta-text">of Q1 budget ($1.24M)</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Reserve Fund Balance<span class="kpi-icon" style="background:rgba(0,168,150,0.15)" role="img" aria-label="Reserves">&#x1F3E6;</span></div>
+        <div class="kpi-value">$840K</div>
+        <div class="kpi-meta"><span class="badge badge-green">Healthy</span><span class="kpi-meta-text">target: $750K minimum</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Cost Recovery Rate<span class="kpi-icon" style="background:rgba(82,183,136,0.15)" role="img" aria-label="Recovery">&#x1F4CA;</span></div>
+        <div class="kpi-value">62%</div>
+        <div class="kpi-meta"><span class="badge badge-green">&uarr; 4pts</span><span class="kpi-meta-text">programs &amp; facilities</span></div>
       </div>
     </div>
 
-    <div class="kpi-card" onclick="showModal('members')">
-      <div class="kpi-label">
-        Active UNA Members
-        <div class="kpi-icon" style="background:rgba(0,168,150,0.15)">&#x1F465;</div>
+    <div class="section-label">Budget vs. Actuals &mdash; Detailed Breakdown</div>
+    <div class="section-grid">
+      <div class="panel">
+        <div class="panel-header"><span class="panel-title">Department Spending</span><span class="panel-action">Q1 2026</span></div>
+        <div class="panel-body">
+          <div class="finance-row">
+            <div class="f-item"><div class="f-labels"><span class="f-name">Recreation Programs</span><div class="f-amounts"><span class="f-actual">$412K</span><span class="f-budget">/ $540K</span><span class="badge badge-green badge-sm">76%</span></div></div><div class="bar-track"><div class="bar-fill bar-green" style="width:76%"></div></div></div>
+            <div class="f-item"><div class="f-labels"><span class="f-name">Community Services</span><div class="f-amounts"><span class="f-actual">$288K</span><span class="f-budget">/ $310K</span><span class="badge badge-amber badge-sm">93%</span></div></div><div class="bar-track"><div class="bar-fill bar-amber" style="width:93%"></div></div></div>
+            <div class="f-item"><div class="f-labels"><span class="f-name">Facility Operations</span><div class="f-amounts"><span class="f-actual">$198K</span><span class="f-budget">/ $225K</span><span class="badge badge-green badge-sm">88%</span></div></div><div class="bar-track"><div class="bar-fill bar-green" style="width:88%"></div></div></div>
+            <div class="f-item"><div class="f-labels"><span class="f-name">Administration</span><div class="f-amounts"><span class="f-actual">$174K</span><span class="f-budget">/ $160K</span><span class="badge badge-red badge-sm">109%</span></div></div><div class="bar-track"><div class="bar-fill bar-red" style="width:100%"></div></div></div>
+            <div class="f-item"><div class="f-labels"><span class="f-name">Neighbours Fund</span><div class="f-amounts"><span class="f-actual">$62K</span><span class="f-budget">/ $200K</span><span class="badge badge-teal badge-sm">31%</span></div></div><div class="bar-track"><div class="bar-fill bar-teal" style="width:31%"></div></div></div>
+          </div>
+        </div>
       </div>
-      <div class="kpi-value">3,812</div>
-      <div class="kpi-meta">
-        <span class="badge badge-green">&uarr; 6%</span>
-        <span class="kpi-meta-text">vs. same period last year</span>
-        <span class="drill-hint">Drill in &rarr;</span>
-      </div>
-    </div>
-
-    <div class="kpi-card" onclick="showModal('programs')">
-      <div class="kpi-label">
-        Program Fill Rate
-        <div class="kpi-icon" style="background:rgba(244,162,97,0.15)">&#x1F3CB;&#xFE0F;</div>
-      </div>
-      <div class="kpi-value">74%</div>
-      <div class="kpi-meta">
-        <span class="badge badge-amber">&darr; 3pts</span>
-        <span class="kpi-meta-text">vs. Q4 2025</span>
-        <span class="drill-hint">Drill in &rarr;</span>
-      </div>
-    </div>
-
-    <div class="kpi-card" onclick="showModal('risk')">
-      <div class="kpi-label">
-        Open Action Items
-        <div class="kpi-icon" style="background:rgba(224,92,92,0.12)">&#x26A0;&#xFE0F;</div>
-      </div>
-      <div class="kpi-value">7</div>
-      <div class="kpi-meta">
-        <span class="badge badge-red">2 urgent</span>
-        <span class="kpi-meta-text">require board decision</span>
-        <span class="drill-hint">Drill in &rarr;</span>
+      <div class="panel">
+        <div class="panel-header"><span class="panel-title">Revenue Sources</span><span class="panel-action">Q1 2026</span></div>
+        <div class="panel-body">
+          <table class="metrics-table">
+            <tr><td class="td-label">Residential Services Levy</td><td class="td-value">$2,401K</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;3%</span></td></tr>
+            <tr><td class="td-label">Program &amp; Facility Fees</td><td class="td-value">$186K</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;8%</span></td></tr>
+            <tr><td class="td-label">Room &amp; Field Rentals</td><td class="td-value">$42K</td><td class="td-trend"><span class="badge badge-amber badge-sm">&darr;2%</span></td></tr>
+            <tr><td class="td-label">Parking Revenue</td><td class="td-value">$28K</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;5%</span></td></tr>
+            <tr><td class="td-label">Interest Income</td><td class="td-value">$11K</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;22%</span></td></tr>
+            <tr><td class="td-label">Grants &amp; Sponsorships</td><td class="td-value">$8K</td><td class="td-trend"><span class="badge badge-teal badge-sm">new</span></td></tr>
+          </table>
+        </div>
       </div>
     </div>
 
+    <div class="section-label">Monthly Cash Flow</div>
+    <div class="panel">
+      <div class="panel-header"><span class="panel-title">Revenue vs. Expenses &mdash; Monthly Trend</span><span class="panel-action">Last 6 Months</span></div>
+      <div class="panel-body">
+        <div class="chart-grid">
+          <div class="chart-bar-group"><div class="chart-bar-pair"><div class="chart-bar chart-bar-revenue" style="height:70%" title="$420K"></div><div class="chart-bar chart-bar-expense" style="height:58%" title="$348K"></div></div><div class="chart-month">Oct</div></div>
+          <div class="chart-bar-group"><div class="chart-bar-pair"><div class="chart-bar chart-bar-revenue" style="height:65%" title="$390K"></div><div class="chart-bar chart-bar-expense" style="height:62%" title="$372K"></div></div><div class="chart-month">Nov</div></div>
+          <div class="chart-bar-group"><div class="chart-bar-pair"><div class="chart-bar chart-bar-revenue" style="height:55%" title="$330K"></div><div class="chart-bar chart-bar-expense" style="height:50%" title="$300K"></div></div><div class="chart-month">Dec</div></div>
+          <div class="chart-bar-group"><div class="chart-bar-pair"><div class="chart-bar chart-bar-revenue" style="height:80%" title="$480K"></div><div class="chart-bar chart-bar-expense" style="height:60%" title="$360K"></div></div><div class="chart-month">Jan</div></div>
+          <div class="chart-bar-group"><div class="chart-bar-pair"><div class="chart-bar chart-bar-revenue" style="height:75%" title="$450K"></div><div class="chart-bar chart-bar-expense" style="height:65%" title="$390K"></div></div><div class="chart-month">Feb</div></div>
+          <div class="chart-bar-group"><div class="chart-bar-pair"><div class="chart-bar chart-bar-revenue" style="height:85%" title="$510K"></div><div class="chart-bar chart-bar-expense" style="height:63%" title="$378K"></div></div><div class="chart-month">Mar</div></div>
+        </div>
+        <div class="chart-legend">
+          <span class="chart-legend-item"><span class="chart-legend-dot" style="background:var(--teal)"></span> Revenue</span>
+          <span class="chart-legend-item"><span class="chart-legend-dot" style="background:var(--amber)"></span> Expenses</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Neighbours Fund</div>
+    <div class="section-grid">
+      <div class="panel">
+        <div class="panel-header"><span class="panel-title">Grant Distribution &mdash; Q1 2026</span><span class="panel-action">$62K of $200K allocated</span></div>
+        <div class="panel-body">
+          <table class="metrics-table">
+            <tr><td class="td-label">Wesbrook Village Community Garden</td><td class="td-value">$18,000</td><td class="td-trend"><span class="badge badge-green badge-sm">approved</span></td></tr>
+            <tr><td class="td-label">Youth Arts Workshop Series</td><td class="td-value">$12,500</td><td class="td-trend"><span class="badge badge-green badge-sm">approved</span></td></tr>
+            <tr><td class="td-label">East Campus Playground Upgrade</td><td class="td-value">$15,000</td><td class="td-trend"><span class="badge badge-green badge-sm">approved</span></td></tr>
+            <tr><td class="td-label">Seniors Social Program</td><td class="td-value">$8,500</td><td class="td-trend"><span class="badge badge-green badge-sm">approved</span></td></tr>
+            <tr><td class="td-label">Block Party Equipment Fund</td><td class="td-value">$8,000</td><td class="td-trend"><span class="badge badge-green badge-sm">approved</span></td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-header"><span class="panel-title">Pending Applications</span><span class="panel-action">4 awaiting review</span></div>
+        <div class="panel-body">
+          <div class="alert-list">
+            <div class="alert-item"><div class="alert-dot dot-amber"></div><div><div class="alert-text">Hawthorn Lane Trail Lighting &mdash; $22,000</div><div class="alert-meta">Submitted Feb 20 &middot; Under review</div></div></div>
+            <div class="alert-item"><div class="alert-dot dot-amber"></div><div><div class="alert-text">Community Bike Repair Station &mdash; $6,500</div><div class="alert-meta">Submitted Mar 1 &middot; Under review</div></div></div>
+            <div class="alert-item"><div class="alert-dot dot-teal"></div><div><div class="alert-text">Multicultural Festival Support &mdash; $14,000</div><div class="alert-meta">Submitted Mar 5 &middot; New</div></div></div>
+            <div class="alert-item"><div class="alert-dot dot-teal"></div><div><div class="alert-text">Dog Park Amenity Upgrade &mdash; $9,800</div><div class="alert-meta">Submitted Mar 8 &middot; New</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- MAIN GRID: Finance + Alerts -->
-  <div class="section-label">Financial &amp; Risk Snapshot</div>
-  <div class="section-grid">
+  <!-- ═══════════════════════════════════════ -->
+  <!-- TAB: RECREATION                         -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="tab-content" id="tab-recreation" role="tabpanel" aria-hidden="true">
 
-    <!-- FINANCE PANEL -->
-    <div class="panel" onclick="showModal('finance')">
-      <div class="panel-header">
-        <span class="panel-title">Budget vs. Actuals &mdash; Q1 2026</span>
-        <span class="panel-action">View Full Report <span class="drill-arrow">&rarr;</span></span>
+    <div class="section-label">Recreation Overview</div>
+    <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="kpi-label">Total Programs<span class="kpi-icon" style="background:rgba(0,168,150,0.15)" role="img" aria-label="Programs">&#x1F4CB;</span></div>
+        <div class="kpi-value">87</div>
+        <div class="kpi-meta"><span class="badge badge-green">&uarr; 12</span><span class="kpi-meta-text">vs. Q1 2025</span></div>
       </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Avg Fill Rate<span class="kpi-icon" style="background:rgba(244,162,97,0.15)" role="img" aria-label="Fill rate">&#x1F4CA;</span></div>
+        <div class="kpi-value">74%</div>
+        <div class="kpi-meta"><span class="badge badge-amber">&darr; 3pts</span><span class="kpi-meta-text">target: 80%</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Total Drop-ins<span class="kpi-icon" style="background:rgba(82,183,136,0.15)" role="img" aria-label="Drop-ins">&#x1F3C3;</span></div>
+        <div class="kpi-value">4,820</div>
+        <div class="kpi-meta"><span class="badge badge-green">&uarr; 8%</span><span class="kpi-meta-text">all facilities</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">On Waitlists<span class="kpi-icon" style="background:rgba(224,92,92,0.12)" role="img" aria-label="Waitlist">&#x23F3;</span></div>
+        <div class="kpi-value">142</div>
+        <div class="kpi-meta"><span class="badge badge-amber">6 programs</span><span class="kpi-meta-text">at capacity</span></div>
+      </div>
+    </div>
+
+    <div class="section-label">Program Fill Rates by Category</div>
+    <div class="panel">
+      <div class="panel-header"><span class="panel-title">Fill Rate Breakdown</span><span class="panel-action">Q1 2026</span></div>
       <div class="panel-body">
         <div class="finance-row">
-
-          <div class="f-item">
-            <div class="f-labels">
-              <span class="f-name">Recreation Programs</span>
-              <div class="f-amounts">
-                <span class="f-actual">$412K</span>
-                <span class="f-budget">/ $540K</span>
-                <span class="badge badge-green" style="font-size:10px">76%</span>
-              </div>
-            </div>
-            <div class="bar-track"><div class="bar-fill bar-green" style="width:76%"></div></div>
-          </div>
-
-          <div class="f-item">
-            <div class="f-labels">
-              <span class="f-name">Community Services</span>
-              <div class="f-amounts">
-                <span class="f-actual">$288K</span>
-                <span class="f-budget">/ $310K</span>
-                <span class="badge badge-amber" style="font-size:10px">93%</span>
-              </div>
-            </div>
-            <div class="bar-track"><div class="bar-fill bar-amber" style="width:93%"></div></div>
-          </div>
-
-          <div class="f-item">
-            <div class="f-labels">
-              <span class="f-name">Facility Operations</span>
-              <div class="f-amounts">
-                <span class="f-actual">$198K</span>
-                <span class="f-budget">/ $225K</span>
-                <span class="badge badge-green" style="font-size:10px">88%</span>
-              </div>
-            </div>
-            <div class="bar-track"><div class="bar-fill bar-green" style="width:88%"></div></div>
-          </div>
-
-          <div class="f-item">
-            <div class="f-labels">
-              <span class="f-name">Administration</span>
-              <div class="f-amounts">
-                <span class="f-actual">$174K</span>
-                <span class="f-budget">/ $160K</span>
-                <span class="badge badge-red" style="font-size:10px">109%</span>
-              </div>
-            </div>
-            <div class="bar-track"><div class="bar-fill bar-red" style="width:100%"></div></div>
-          </div>
-
-          <div class="f-item">
-            <div class="f-labels">
-              <span class="f-name">Neighbours Fund (disbursed)</span>
-              <div class="f-amounts">
-                <span class="f-actual">$62K</span>
-                <span class="f-budget">/ $200K</span>
-                <span class="badge badge-teal" style="font-size:10px">31%</span>
-              </div>
-            </div>
-            <div class="bar-track"><div class="bar-fill bar-teal" style="width:31%"></div></div>
-          </div>
-
+          <div class="f-item"><div class="f-labels"><span class="f-name">Youth Programs (ages 6&ndash;12)</span><div class="f-amounts"><span class="f-actual">92%</span><span class="f-budget">28 / 30 programs</span><span class="badge badge-green badge-sm">strong</span></div></div><div class="bar-track"><div class="bar-fill bar-green" style="width:92%"></div></div></div>
+          <div class="f-item"><div class="f-labels"><span class="f-name">Adult Fitness &amp; Wellness</span><div class="f-amounts"><span class="f-actual">81%</span><span class="f-budget">18 / 22 programs</span><span class="badge badge-green badge-sm">good</span></div></div><div class="bar-track"><div class="bar-fill bar-green" style="width:81%"></div></div></div>
+          <div class="f-item"><div class="f-labels"><span class="f-name">Senior Programs (55+)</span><div class="f-amounts"><span class="f-actual">68%</span><span class="f-budget">11 / 16 programs</span><span class="badge badge-amber badge-sm">below target</span></div></div><div class="bar-track"><div class="bar-fill bar-amber" style="width:68%"></div></div></div>
+          <div class="f-item"><div class="f-labels"><span class="f-name">Camps &amp; Specialty</span><div class="f-amounts"><span class="f-actual">77%</span><span class="f-budget">92 / 120 spots</span><span class="badge badge-green badge-sm">on track</span></div></div><div class="bar-track"><div class="bar-fill bar-green" style="width:77%"></div></div></div>
+          <div class="f-item"><div class="f-labels"><span class="f-name">Aquatics</span><div class="f-amounts"><span class="f-actual">55%</span><span class="f-budget">6 / 11 programs</span><span class="badge badge-red badge-sm">low</span></div></div><div class="bar-track"><div class="bar-fill bar-red" style="width:55%"></div></div></div>
         </div>
       </div>
     </div>
 
-    <!-- ALERTS PANEL -->
-    <div class="panel" onclick="showModal('alerts')">
-      <div class="panel-header">
-        <span class="panel-title">Board Attention Required</span>
-        <span class="panel-action">All Items <span class="drill-arrow">&rarr;</span></span>
+    <div class="section-label">Facility Utilization</div>
+    <div class="section-grid">
+      <div class="panel">
+        <div class="panel-header"><span class="panel-title">Wesbrook Community Centre</span><span class="panel-action">81% avg utilization</span></div>
+        <div class="panel-body">
+          <table class="metrics-table">
+            <tr><td class="td-label">Gymnasium</td><td class="td-value">91%</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;5pt</span></td></tr>
+            <tr><td class="td-label">Fitness Centre</td><td class="td-value">86%</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;3pt</span></td></tr>
+            <tr><td class="td-label">Multi-purpose Rooms</td><td class="td-value">78%</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;1pt</span></td></tr>
+            <tr><td class="td-label">Arts Studio</td><td class="td-value">72%</td><td class="td-trend"><span class="badge badge-amber badge-sm">&darr;2pt</span></td></tr>
+            <tr><td class="td-label">Outdoor Courts</td><td class="td-value">65%</td><td class="td-trend"><span class="badge badge-amber badge-sm">seasonal</span></td></tr>
+          </table>
+        </div>
       </div>
-      <div class="panel-body">
-        <div class="alert-list">
-
-          <div class="alert-item">
-            <div class="alert-dot dot-red"></div>
-            <div>
-              <div class="alert-text">Admin budget overage &mdash; 9% above Q1 target</div>
-              <div class="alert-meta">Finance &middot; Flagged Feb 28</div>
-            </div>
-          </div>
-
-          <div class="alert-item">
-            <div class="alert-dot dot-red"></div>
-            <div>
-              <div class="alert-text">Committee vacancy &mdash; 3 seats unfilled for 60+ days</div>
-              <div class="alert-meta">Governance &middot; Flagged Feb 10</div>
-            </div>
-          </div>
-
-          <div class="alert-item">
-            <div class="alert-dot dot-amber"></div>
-            <div>
-              <div class="alert-text">Wesbrook fitness equipment &mdash; capital approval needed</div>
-              <div class="alert-meta">Facilities &middot; Estimated $38K</div>
-            </div>
-          </div>
-
-          <div class="alert-item">
-            <div class="alert-dot dot-amber"></div>
-            <div>
-              <div class="alert-text">2026 Budget Consultation closes Mar 15</div>
-              <div class="alert-meta">Finance &middot; Board input required</div>
-            </div>
-          </div>
-
-          <div class="alert-item">
-            <div class="alert-dot dot-teal"></div>
-            <div>
-              <div class="alert-text">Strategic Plan refresh: 3 initiatives on track for Q2 launch</div>
-              <div class="alert-meta">Strategy &middot; For awareness</div>
-            </div>
-          </div>
-
+      <div class="panel">
+        <div class="panel-header"><span class="panel-title">Old Barn Community Centre</span><span class="panel-action">67% avg utilization</span></div>
+        <div class="panel-body">
+          <table class="metrics-table">
+            <tr><td class="td-label">Main Hall</td><td class="td-value">74%</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;2pt</span></td></tr>
+            <tr><td class="td-label">Dance Studio</td><td class="td-value">71%</td><td class="td-trend"><span class="badge badge-green badge-sm">&rarr;</span></td></tr>
+            <tr><td class="td-label">Meeting Rooms</td><td class="td-value">62%</td><td class="td-trend"><span class="badge badge-amber badge-sm">&darr;4pt</span></td></tr>
+            <tr><td class="td-label">Kitchen Facility</td><td class="td-value">58%</td><td class="td-trend"><span class="badge badge-amber badge-sm">&darr;1pt</span></td></tr>
+            <tr><td class="td-label">Outdoor Field</td><td class="td-value">48%</td><td class="td-trend"><span class="badge badge-red badge-sm">seasonal</span></td></tr>
+          </table>
         </div>
       </div>
     </div>
 
+    <div class="section-label">Drop-in Activity Breakdown</div>
+    <div class="panel">
+      <div class="panel-header"><span class="panel-title">Top Drop-in Activities &mdash; Q1 2026</span><span class="panel-action">4,820 total visits</span></div>
+      <div class="panel-body">
+        <div class="finance-row">
+          <div class="f-item"><div class="f-labels"><span class="f-name">Badminton</span><div class="f-amounts"><span class="f-actual">1,240</span><span class="f-budget">visits</span><span class="badge badge-green badge-sm">26%</span></div></div><div class="bar-track"><div class="bar-fill bar-teal" style="width:26%"></div></div></div>
+          <div class="f-item"><div class="f-labels"><span class="f-name">Basketball</span><div class="f-amounts"><span class="f-actual">980</span><span class="f-budget">visits</span><span class="badge badge-green badge-sm">20%</span></div></div><div class="bar-track"><div class="bar-fill bar-teal" style="width:20%"></div></div></div>
+          <div class="f-item"><div class="f-labels"><span class="f-name">Fitness Centre</span><div class="f-amounts"><span class="f-actual">860</span><span class="f-budget">visits</span><span class="badge badge-green badge-sm">18%</span></div></div><div class="bar-track"><div class="bar-fill bar-teal" style="width:18%"></div></div></div>
+          <div class="f-item"><div class="f-labels"><span class="f-name">Pickleball</span><div class="f-amounts"><span class="f-actual">720</span><span class="f-budget">visits</span><span class="badge badge-green badge-sm">15%</span></div></div><div class="bar-track"><div class="bar-fill bar-teal" style="width:15%"></div></div></div>
+          <div class="f-item"><div class="f-labels"><span class="f-name">Other (volleyball, table tennis, etc.)</span><div class="f-amounts"><span class="f-actual">1,020</span><span class="f-budget">visits</span><span class="badge badge-green badge-sm">21%</span></div></div><div class="bar-track"><div class="bar-fill bar-teal" style="width:21%"></div></div></div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- BOTTOM GRID: 3 columns -->
-  <div class="section-label">Community &amp; Operations</div>
-  <div class="section-grid-3">
+  <!-- ═══════════════════════════════════════ -->
+  <!-- TAB: SERVICES                           -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="tab-content" id="tab-services" role="tabpanel" aria-hidden="true">
 
-    <!-- MEMBERSHIP & ENGAGEMENT -->
-    <div class="panel" onclick="showModal('members')">
-      <div class="panel-header">
-        <span class="panel-title">Membership &amp; Engagement</span>
-        <span class="panel-action">Details <span class="drill-arrow">&rarr;</span></span>
+    <div class="section-label">Community Services Overview</div>
+    <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="kpi-label">UNA Accounts<span class="kpi-icon" style="background:rgba(0,168,150,0.15)" role="img" aria-label="Members">&#x1F465;</span></div>
+        <div class="kpi-value">3,812</div>
+        <div class="kpi-meta"><span class="badge badge-green">&uarr; 6%</span><span class="kpi-meta-text">active registrations</span></div>
       </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Green Depot Diversion<span class="kpi-icon" style="background:rgba(82,183,136,0.15)" role="img" aria-label="Recycling">&#x267B;&#xFE0F;</span></div>
+        <div class="kpi-value">18.4t</div>
+        <div class="kpi-meta"><span class="badge badge-green">&uarr; 14%</span><span class="kpi-meta-text">tonnes diverted Q1</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Child Care Enrolled<span class="kpi-icon" style="background:rgba(244,162,97,0.15)" role="img" aria-label="Child care">&#x1F476;</span></div>
+        <div class="kpi-value">72 / 80</div>
+        <div class="kpi-meta"><span class="badge badge-green">90%</span><span class="kpi-meta-text">capacity filled</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Safety Incidents<span class="kpi-icon" style="background:rgba(224,92,92,0.12)" role="img" aria-label="Safety">&#x1F6A8;</span></div>
+        <div class="kpi-value">14</div>
+        <div class="kpi-meta"><span class="badge badge-green">&darr; 22%</span><span class="kpi-meta-text">vs. Q1 2025</span></div>
+      </div>
+    </div>
+
+    <div class="section-label">Membership &amp; Engagement</div>
+    <div class="section-grid">
+      <div class="panel">
+        <div class="panel-header"><span class="panel-title">Membership by Neighbourhood</span><span class="panel-action">Q1 2026</span></div>
+        <div class="panel-body">
+          <div class="finance-row">
+            <div class="f-item"><div class="f-labels"><span class="f-name">Wesbrook Place</span><div class="f-amounts"><span class="f-actual">1,680</span><span class="f-budget">44%</span><span class="badge badge-green badge-sm">&uarr;4%</span></div></div><div class="bar-track"><div class="bar-fill bar-teal" style="width:44%"></div></div></div>
+            <div class="f-item"><div class="f-labels"><span class="f-name">East Campus</span><div class="f-amounts"><span class="f-actual">952</span><span class="f-budget">25%</span><span class="badge badge-green badge-sm">&uarr;8%</span></div></div><div class="bar-track"><div class="bar-fill bar-teal" style="width:25%"></div></div></div>
+            <div class="f-item"><div class="f-labels"><span class="f-name">Hawthorn Place</span><div class="f-amounts"><span class="f-actual">724</span><span class="f-budget">19%</span><span class="badge badge-green badge-sm">&uarr;6%</span></div></div><div class="bar-track"><div class="bar-fill bar-teal" style="width:19%"></div></div></div>
+            <div class="f-item"><div class="f-labels"><span class="f-name">Chancellor Place &amp; Other</span><div class="f-amounts"><span class="f-actual">456</span><span class="f-budget">12%</span><span class="badge badge-green badge-sm">&uarr;10%</span></div></div><div class="bar-track"><div class="bar-fill bar-teal" style="width:12%"></div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-header"><span class="panel-title">Communication &amp; Outreach</span><span class="panel-action">Q1 2026</span></div>
+        <div class="panel-body">
+          <table class="metrics-table">
+            <tr><td class="td-label">Newsletter subscribers</td><td class="td-value">2,940</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;4%</span></td></tr>
+            <tr><td class="td-label">Newsletter open rate</td><td class="td-value">42%</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;3pt</span></td></tr>
+            <tr><td class="td-label">Newsletter click rate</td><td class="td-value">8.2%</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;1pt</span></td></tr>
+            <tr><td class="td-label">Social media followers</td><td class="td-value">4,180</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;11%</span></td></tr>
+            <tr><td class="td-label">Website unique visitors (Q1)</td><td class="td-value">12,400</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;7%</span></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Operational Services</div>
+    <div class="section-grid-3">
+      <div class="panel">
+        <div class="panel-header"><span class="panel-title">Green Depot</span><span class="panel-action">Waste Diversion</span></div>
+        <div class="panel-body">
+          <table class="metrics-table">
+            <tr><td class="td-label">Total visits (Q1)</td><td class="td-value">3,240</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;9%</span></td></tr>
+            <tr><td class="td-label">Tonnes diverted</td><td class="td-value">18.4t</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;14%</span></td></tr>
+            <tr><td class="td-label">Recycling rate</td><td class="td-value">78%</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;3pt</span></td></tr>
+            <tr><td class="td-label">Composting rate</td><td class="td-value">22%</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;2pt</span></td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-header"><span class="panel-title">Child Care</span><span class="panel-action">UNA-licensed</span></div>
+        <div class="panel-body">
+          <table class="metrics-table">
+            <tr><td class="td-label">Licensed capacity</td><td class="td-value">80</td><td class="td-trend"><span class="badge badge-teal badge-sm">steady</span></td></tr>
+            <tr><td class="td-label">Current enrollment</td><td class="td-value">72</td><td class="td-trend"><span class="badge badge-green badge-sm">90%</span></td></tr>
+            <tr><td class="td-label">Waitlist families</td><td class="td-value">38</td><td class="td-trend"><span class="badge badge-amber badge-sm">&uarr;6</span></td></tr>
+            <tr><td class="td-label">Staff retention</td><td class="td-value">92%</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;4pt</span></td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-header"><span class="panel-title">Parking &amp; Safety</span><span class="panel-action">Operations</span></div>
+        <div class="panel-body">
+          <table class="metrics-table">
+            <tr><td class="td-label">Parking revenue (Q1)</td><td class="td-value">$28K</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;5%</span></td></tr>
+            <tr><td class="td-label">Enforcement actions</td><td class="td-value">186</td><td class="td-trend"><span class="badge badge-amber badge-sm">&darr;8%</span></td></tr>
+            <tr><td class="td-label">Safety incidents</td><td class="td-value">14</td><td class="td-trend"><span class="badge badge-green badge-sm">&darr;22%</span></td></tr>
+            <tr><td class="td-label">Avg response time</td><td class="td-value">12 min</td><td class="td-trend"><span class="badge badge-green badge-sm">&darr;3min</span></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Events &amp; Volunteering</div>
+    <div class="section-grid">
+      <div class="panel">
+        <div class="panel-header"><span class="panel-title">Community Events &mdash; Q1 2026</span><span class="panel-action">22 events held</span></div>
+        <div class="panel-body">
+          <table class="metrics-table">
+            <tr><td class="td-label">Movie Night (Jan 18)</td><td class="td-value">180 attended</td><td class="td-trend"><span class="badge badge-green badge-sm">sold out</span></td></tr>
+            <tr><td class="td-label">Lunar New Year Celebration (Feb 1)</td><td class="td-value">320 attended</td><td class="td-trend"><span class="badge badge-green badge-sm">record</span></td></tr>
+            <tr><td class="td-label">Family Skate Day (Feb 15)</td><td class="td-value">145 attended</td><td class="td-trend"><span class="badge badge-green badge-sm">good</span></td></tr>
+            <tr><td class="td-label">Spring Art Fair (Mar 8)</td><td class="td-value">210 attended</td><td class="td-trend"><span class="badge badge-green badge-sm">strong</span></td></tr>
+            <tr><td class="td-label">Total Q1 attendance</td><td class="td-value">2,840</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;15%</span></td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-header"><span class="panel-title">Volunteer Activity</span><span class="panel-action">Q1 2026</span></div>
+        <div class="panel-body">
+          <table class="metrics-table">
+            <tr><td class="td-label">Active volunteers</td><td class="td-value">84</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;12%</span></td></tr>
+            <tr><td class="td-label">Total hours logged</td><td class="td-value">640 hrs</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;12%</span></td></tr>
+            <tr><td class="td-label">Committee volunteers</td><td class="td-value">32</td><td class="td-trend"><span class="badge badge-teal badge-sm">steady</span></td></tr>
+            <tr><td class="td-label">Event volunteers</td><td class="td-value">52</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;18%</span></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- TAB: GOVERNANCE                         -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="tab-content" id="tab-governance" role="tabpanel" aria-hidden="true">
+
+    <div class="section-label">Governance Overview</div>
+    <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="kpi-label">Board Attendance<span class="kpi-icon" style="background:rgba(82,183,136,0.15)" role="img" aria-label="Attendance">&#x1F3DB;&#xFE0F;</span></div>
+        <div class="kpi-value">87%</div>
+        <div class="kpi-meta"><span class="badge badge-green">&uarr; 4pts</span><span class="kpi-meta-text">avg across 3 meetings</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Committee Vacancies<span class="kpi-icon" style="background:rgba(224,92,92,0.12)" role="img" aria-label="Vacancies">&#x1F4CC;</span></div>
+        <div class="kpi-value">3</div>
+        <div class="kpi-meta"><span class="badge badge-red">urgent</span><span class="kpi-meta-text">unfilled 60+ days</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Open Resolutions<span class="kpi-icon" style="background:rgba(244,162,97,0.15)" role="img" aria-label="Resolutions">&#x1F4DD;</span></div>
+        <div class="kpi-value">2</div>
+        <div class="kpi-meta"><span class="badge badge-amber">pending</span><span class="kpi-meta-text">awaiting vote</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Days to AGM<span class="kpi-icon" style="background:rgba(0,168,150,0.15)" role="img" aria-label="Calendar">&#x1F4C5;</span></div>
+        <div class="kpi-value">73</div>
+        <div class="kpi-meta"><span class="badge badge-teal">May 14</span><span class="kpi-meta-text">confirmed date</span></div>
+      </div>
+    </div>
+
+    <div class="section-label">Board Meeting Attendance</div>
+    <div class="panel">
+      <div class="panel-header"><span class="panel-title">Director Attendance &mdash; Q1 2026</span><span class="panel-action">3 meetings held</span></div>
       <div class="panel-body">
         <table class="metrics-table">
-          <tr>
-            <td class="td-label">UNA Accounts (active)</td>
-            <td class="td-value">3,812</td>
-            <td class="td-trend"><span class="badge badge-green" style="font-size:10px">&uarr;6%</span></td>
-          </tr>
-          <tr>
-            <td class="td-label">Society Members</td>
-            <td class="td-value">1,204</td>
-            <td class="td-trend"><span class="badge badge-green" style="font-size:10px">&uarr;2%</span></td>
-          </tr>
-          <tr>
-            <td class="td-label">UNA Cards issued (Q1)</td>
-            <td class="td-value">318</td>
-            <td class="td-trend"><span class="badge badge-teal" style="font-size:10px">new</span></td>
-          </tr>
-          <tr>
-            <td class="td-label">Newsletter subscribers</td>
-            <td class="td-value">2,940</td>
-            <td class="td-trend"><span class="badge badge-green" style="font-size:10px">&uarr;4%</span></td>
-          </tr>
-          <tr>
-            <td class="td-label">Events held (Q1)</td>
-            <td class="td-value">22</td>
-            <td class="td-trend"><span class="badge badge-amber" style="font-size:10px">&darr;1</span></td>
-          </tr>
-          <tr>
-            <td class="td-label">Volunteer hours logged</td>
-            <td class="td-value">640 hrs</td>
-            <td class="td-trend"><span class="badge badge-green" style="font-size:10px">&uarr;12%</span></td>
-          </tr>
+          <tr><td class="td-label">Director A (Chair)</td><td class="td-value">3 / 3</td><td class="td-trend"><span class="badge badge-green badge-sm">100%</span></td></tr>
+          <tr><td class="td-label">Director B (Vice-Chair)</td><td class="td-value">3 / 3</td><td class="td-trend"><span class="badge badge-green badge-sm">100%</span></td></tr>
+          <tr><td class="td-label">Director C (Treasurer)</td><td class="td-value">3 / 3</td><td class="td-trend"><span class="badge badge-green badge-sm">100%</span></td></tr>
+          <tr><td class="td-label">Director D</td><td class="td-value">2 / 3</td><td class="td-trend"><span class="badge badge-amber badge-sm">67%</span></td></tr>
+          <tr><td class="td-label">Director E</td><td class="td-value">3 / 3</td><td class="td-trend"><span class="badge badge-green badge-sm">100%</span></td></tr>
+          <tr><td class="td-label">Director F</td><td class="td-value">2 / 3</td><td class="td-trend"><span class="badge badge-amber badge-sm">67%</span></td></tr>
+          <tr><td class="td-label">Director G</td><td class="td-value">3 / 3</td><td class="td-trend"><span class="badge badge-green badge-sm">100%</span></td></tr>
         </table>
       </div>
     </div>
 
-    <!-- RECREATION -->
-    <div class="panel" onclick="showModal('programs')">
-      <div class="panel-header">
-        <span class="panel-title">Recreation Utilization</span>
-        <span class="panel-action">Details <span class="drill-arrow">&rarr;</span></span>
+    <div class="section-label">Committees &amp; Resolutions</div>
+    <div class="section-grid">
+      <div class="panel">
+        <div class="panel-header"><span class="panel-title">Committee Roster</span><span class="panel-action">7 committees</span></div>
+        <div class="panel-body">
+          <table class="metrics-table">
+            <tr><td class="td-label">Finance &amp; Audit</td><td class="td-value">5 / 5</td><td class="td-trend"><span class="badge badge-green badge-sm">full</span></td></tr>
+            <tr><td class="td-label">Recreation &amp; Facilities</td><td class="td-value">4 / 5</td><td class="td-trend"><span class="badge badge-amber badge-sm">1 open</span></td></tr>
+            <tr><td class="td-label">Community Engagement</td><td class="td-value">3 / 5</td><td class="td-trend"><span class="badge badge-red badge-sm">2 open</span></td></tr>
+            <tr><td class="td-label">Governance &amp; HR</td><td class="td-value">5 / 5</td><td class="td-trend"><span class="badge badge-green badge-sm">full</span></td></tr>
+            <tr><td class="td-label">Sustainability</td><td class="td-value">5 / 5</td><td class="td-trend"><span class="badge badge-green badge-sm">full</span></td></tr>
+            <tr><td class="td-label">Elections</td><td class="td-value">4 / 4</td><td class="td-trend"><span class="badge badge-green badge-sm">full</span></td></tr>
+            <tr><td class="td-label">Neighbours Fund</td><td class="td-value">5 / 5</td><td class="td-trend"><span class="badge badge-green badge-sm">full</span></td></tr>
+          </table>
+        </div>
       </div>
+      <div class="panel">
+        <div class="panel-header"><span class="panel-title">Open Resolutions</span><span class="panel-action">2 pending</span></div>
+        <div class="panel-body">
+          <div class="alert-list">
+            <div class="alert-item"><div class="alert-dot dot-amber"></div><div><div class="alert-text">Resolution 2026-04: Approve Wesbrook fitness equipment capital expenditure ($38K)</div><div class="alert-meta">Tabled Feb 25 &middot; Vote expected Mar 25</div></div></div>
+            <div class="alert-item"><div class="alert-dot dot-amber"></div><div><div class="alert-text">Resolution 2026-05: Amend parking enforcement bylaw for visitor permits</div><div class="alert-meta">Tabled Mar 4 &middot; Public consultation open</div></div></div>
+          </div>
+          <div style="margin-top:16px">
+            <div class="section-label">Recently Passed</div>
+            <div class="alert-list">
+              <div class="alert-item"><div class="alert-dot dot-green"></div><div><div class="alert-text">Resolution 2026-03: 2026 Budget approval &mdash; passed unanimously</div><div class="alert-meta">Passed Jan 28</div></div></div>
+              <div class="alert-item"><div class="alert-dot dot-green"></div><div><div class="alert-text">Resolution 2026-02: Neighbours Fund Q1 allocations &mdash; passed 6-1</div><div class="alert-meta">Passed Feb 25</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Elections &amp; AGM Preparation</div>
+    <div class="section-grid">
+      <div class="panel">
+        <div class="panel-header"><span class="panel-title">AGM Checklist &mdash; May 14, 2026</span><span class="panel-action">73 days away</span></div>
+        <div class="panel-body">
+          <table class="metrics-table">
+            <tr><td class="td-label">Venue booked (Wesbrook main hall)</td><td class="td-value">Done</td><td class="td-trend"><span class="badge badge-green badge-sm">&#x2713;</span></td></tr>
+            <tr><td class="td-label">Notice to members (45-day req.)</td><td class="td-value">Due Mar 30</td><td class="td-trend"><span class="badge badge-amber badge-sm">upcoming</span></td></tr>
+            <tr><td class="td-label">Annual report draft</td><td class="td-value">In progress</td><td class="td-trend"><span class="badge badge-amber badge-sm">60%</span></td></tr>
+            <tr><td class="td-label">Audited financials</td><td class="td-value">Pending</td><td class="td-trend"><span class="badge badge-amber badge-sm">Apr target</span></td></tr>
+            <tr><td class="td-label">Director nominations open</td><td class="td-value">Apr 1</td><td class="td-trend"><span class="badge badge-teal badge-sm">scheduled</span></td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-header"><span class="panel-title">Election History</span><span class="panel-action">Voter participation</span></div>
+        <div class="panel-body">
+          <table class="metrics-table">
+            <tr><td class="td-label">2025 AGM attendance</td><td class="td-value">142</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;18%</span></td></tr>
+            <tr><td class="td-label">2025 voter turnout</td><td class="td-value">11.8%</td><td class="td-trend"><span class="badge badge-amber badge-sm">&uarr;2pt</span></td></tr>
+            <tr><td class="td-label">2024 AGM attendance</td><td class="td-value">120</td><td class="td-trend"><span class="badge badge-teal badge-sm">baseline</span></td></tr>
+            <tr><td class="td-label">Priorities survey (2026)</td><td class="td-value">628</td><td class="td-trend"><span class="badge badge-green badge-sm">&uarr;18%</span></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- TAB: STRATEGIC PLAN                     -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="tab-content" id="tab-strategic" role="tabpanel" aria-hidden="true">
+
+    <div class="section-label">Strategic Plan Progress</div>
+    <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="kpi-label">Initiatives on Track<span class="kpi-icon" style="background:rgba(82,183,136,0.15)" role="img" aria-label="On track">&#x2705;</span></div>
+        <div class="kpi-value">8 / 11</div>
+        <div class="kpi-meta"><span class="badge badge-green">73%</span><span class="kpi-meta-text">meeting milestones</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">At Risk<span class="kpi-icon" style="background:rgba(244,162,97,0.15)" role="img" aria-label="At risk">&#x26A0;&#xFE0F;</span></div>
+        <div class="kpi-value">2</div>
+        <div class="kpi-meta"><span class="badge badge-amber">behind</span><span class="kpi-meta-text">need intervention</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Completed<span class="kpi-icon" style="background:rgba(0,168,150,0.15)" role="img" aria-label="Completed">&#x1F3C6;</span></div>
+        <div class="kpi-value">1</div>
+        <div class="kpi-meta"><span class="badge badge-teal">done</span><span class="kpi-meta-text">since plan adopted</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Plan Horizon<span class="kpi-icon" style="background:rgba(0,168,150,0.15)" role="img" aria-label="Timeline">&#x1F4C5;</span></div>
+        <div class="kpi-value">2024&ndash;28</div>
+        <div class="kpi-meta"><span class="badge badge-teal">Year 2</span><span class="kpi-meta-text">of 5-year plan</span></div>
+      </div>
+    </div>
+
+    <div class="section-label">Strategic Pillars</div>
+
+    <div class="panel" style="margin-bottom:16px">
+      <div class="panel-header"><span class="panel-title">Pillar 1: Community Building &amp; Engagement</span><span class="panel-action"><span class="badge badge-green">On Track</span></span></div>
       <div class="panel-body">
         <table class="metrics-table">
-          <tr>
-            <td class="td-label">Program fill rate</td>
-            <td class="td-value">74%</td>
-            <td class="td-trend"><span class="badge badge-amber" style="font-size:10px">&darr;3pt</span></td>
-          </tr>
-          <tr>
-            <td class="td-label">Wesbrook utilization</td>
-            <td class="td-value">81%</td>
-            <td class="td-trend"><span class="badge badge-green" style="font-size:10px">&uarr;2pt</span></td>
-          </tr>
-          <tr>
-            <td class="td-label">Old Barn utilization</td>
-            <td class="td-value">67%</td>
-            <td class="td-trend"><span class="badge badge-amber" style="font-size:10px">&rarr;</span></td>
-          </tr>
-          <tr>
-            <td class="td-label">Drop-in visits (Q1)</td>
-            <td class="td-value">4,820</td>
-            <td class="td-trend"><span class="badge badge-green" style="font-size:10px">&uarr;8%</span></td>
-          </tr>
-          <tr>
-            <td class="td-label">Programs on waitlist</td>
-            <td class="td-value">6</td>
-            <td class="td-trend"><span class="badge badge-amber" style="font-size:10px">watch</span></td>
-          </tr>
-          <tr>
-            <td class="td-label">Camps registered</td>
-            <td class="td-value">92 / 120</td>
-            <td class="td-trend"><span class="badge badge-teal" style="font-size:10px">77%</span></td>
-          </tr>
+          <tr><td class="td-label">1.1 Increase event attendance by 20% by 2027</td><td class="td-value">+15% YTD</td><td class="td-trend"><span class="badge badge-green badge-sm">on track</span></td></tr>
+          <tr><td class="td-label">1.2 Launch neighbourhood block party program</td><td class="td-value">Launched Q4 2025</td><td class="td-trend"><span class="badge badge-teal badge-sm">complete</span></td></tr>
+          <tr><td class="td-label">1.3 Grow volunteer base to 100 active by 2027</td><td class="td-value">84 active</td><td class="td-trend"><span class="badge badge-green badge-sm">84%</span></td></tr>
         </table>
       </div>
     </div>
 
-    <!-- GOVERNANCE & STRATEGIC -->
-    <div class="panel" onclick="showModal('governance')">
-      <div class="panel-header">
-        <span class="panel-title">Governance &amp; Strategy</span>
-        <span class="panel-action">Details <span class="drill-arrow">&rarr;</span></span>
-      </div>
+    <div class="panel" style="margin-bottom:16px">
+      <div class="panel-header"><span class="panel-title">Pillar 2: Recreation Excellence</span><span class="panel-action"><span class="badge badge-amber">At Risk</span></span></div>
       <div class="panel-body">
         <table class="metrics-table">
-          <tr>
-            <td class="td-label">Board meeting attendance</td>
-            <td class="td-value">87%</td>
-            <td class="td-trend"><span class="badge badge-green" style="font-size:10px">&uarr;</span></td>
-          </tr>
-          <tr>
-            <td class="td-label">Committee vacancies</td>
-            <td class="td-value">3 open</td>
-            <td class="td-trend"><span class="badge badge-red" style="font-size:10px">urgent</span></td>
-          </tr>
-          <tr>
-            <td class="td-label">Strategic initiatives on track</td>
-            <td class="td-value">8 / 11</td>
-            <td class="td-trend"><span class="badge badge-green" style="font-size:10px">73%</span></td>
-          </tr>
-          <tr>
-            <td class="td-label">AGM date confirmed</td>
-            <td class="td-value">May 14</td>
-            <td class="td-trend"><span class="badge badge-teal" style="font-size:10px">set</span></td>
-          </tr>
-          <tr>
-            <td class="td-label">Priorities Survey responses</td>
-            <td class="td-value">628</td>
-            <td class="td-trend"><span class="badge badge-green" style="font-size:10px">&uarr;18%</span></td>
-          </tr>
-          <tr>
-            <td class="td-label">Open board resolutions</td>
-            <td class="td-value">2</td>
-            <td class="td-trend"><span class="badge badge-amber" style="font-size:10px">pending</span></td>
-          </tr>
+          <tr><td class="td-label">2.1 Achieve 80% avg program fill rate</td><td class="td-value">74% current</td><td class="td-trend"><span class="badge badge-amber badge-sm">behind</span></td></tr>
+          <tr><td class="td-label">2.2 Add 15 new programs annually</td><td class="td-value">12 added Q1</td><td class="td-trend"><span class="badge badge-green badge-sm">ahead</span></td></tr>
+          <tr><td class="td-label">2.3 Upgrade Wesbrook fitness equipment</td><td class="td-value">Pending approval</td><td class="td-trend"><span class="badge badge-amber badge-sm">blocked</span></td></tr>
         </table>
       </div>
     </div>
 
+    <div class="panel" style="margin-bottom:16px">
+      <div class="panel-header"><span class="panel-title">Pillar 3: Environmental Sustainability</span><span class="panel-action"><span class="badge badge-green">On Track</span></span></div>
+      <div class="panel-body">
+        <table class="metrics-table">
+          <tr><td class="td-label">3.1 Increase waste diversion to 85% by 2028</td><td class="td-value">78% current</td><td class="td-trend"><span class="badge badge-green badge-sm">on track</span></td></tr>
+          <tr><td class="td-label">3.2 Reduce facility energy use by 15%</td><td class="td-value">-8% YTD</td><td class="td-trend"><span class="badge badge-green badge-sm">on track</span></td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-bottom:16px">
+      <div class="panel-header"><span class="panel-title">Pillar 4: Financial Stewardship</span><span class="panel-action"><span class="badge badge-amber">Watch</span></span></div>
+      <div class="panel-body">
+        <table class="metrics-table">
+          <tr><td class="td-label">4.1 Maintain reserve fund above $750K</td><td class="td-value">$840K</td><td class="td-trend"><span class="badge badge-green badge-sm">healthy</span></td></tr>
+          <tr><td class="td-label">4.2 Improve cost recovery to 70%</td><td class="td-value">62% current</td><td class="td-trend"><span class="badge badge-amber badge-sm">behind</span></td></tr>
+          <tr><td class="td-label">4.3 Complete 5-year capital plan</td><td class="td-value">Draft Q2 2026</td><td class="td-trend"><span class="badge badge-teal badge-sm">on schedule</span></td></tr>
+        </table>
+      </div>
+    </div>
   </div>
 
-</div>
-
-<!-- TOOLTIP -->
-<div class="tooltip" id="tooltip"></div>
-
-<!-- MODAL (drill-down placeholder) -->
-<div class="modal-overlay" id="modal" onclick="closeModal(event)">
-  <div class="modal" onclick="event.stopPropagation()">
-    <div class="modal-title" id="modal-title">Detail View</div>
-    <div class="modal-body" id="modal-body"></div>
-    <div class="modal-close" onclick="document.getElementById('modal').classList.remove('open')">&larr; Back to Summary</div>
-  </div>
-</div>
+</main>
 
 <script src="js/app.js"></script>
 </body>

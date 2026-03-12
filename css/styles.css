@@ -412,8 +412,22 @@ header {
   flex-shrink: 0;
 }
 
-.dot-red { background: var(--red); box-shadow: 0 0 6px var(--red); }
-.dot-amber { background: var(--amber); box-shadow: 0 0 6px rgba(244,162,97,0.5); }
+.dot-red {
+  background: var(--red);
+  box-shadow: 0 0 6px var(--red);
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+.dot-amber {
+  background: transparent;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 8px solid var(--amber);
+  border-radius: 0;
+  box-shadow: none;
+}
 .dot-green { background: var(--green); }
 .dot-teal { background: var(--teal); }
 
@@ -437,7 +451,11 @@ header {
   font-size: 13px;
 }
 
-.td-label { color: #cdd8e3; }
+.td-label {
+  color: #cdd8e3;
+  font-weight: 400;
+  text-align: left;
+}
 .td-value {
   text-align: right;
   font-family: 'DM Mono', monospace;
